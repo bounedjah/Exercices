@@ -26,6 +26,15 @@
       width: 100%;
     }
   </style>
+  <script>
+    function validateMessage(input) {
+      if (input.length < 10) {
+        input.setCustomValidity("Il faut au moins 10 caractères.);
+      } else {
+        input.setCustomValidity("");
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -37,15 +46,32 @@
         <div id="recommend">
           <section>
             <h3> Recommanderez-vous ce produit à d'autres clients ?</h3>
-          </section>
+          <label for="oui"> Oui </label>
+            <input id="oui" type="radio">
+          <label for="non"> Non </label>
+            <input id="non" type="radio">
+         </section>
         </div>
         <div id="rating">
           <h3>Donnez une note entre 1 et 5 :</h3>
+          <select id="note-select" required> 
+           <option value=""> Choisir </option>
+            <option value="1"> 1 </option>
+            <option value="2"> 2 </option>
+            <option value="3"> 3 </option>
+            <option value="4"> 4 </option>
+            <option value="5"> 5 </option>
+          </select>
         </div>
       </div>
       <div id="comment">
         <h3>Ajoutez un commentaire!</h3>
+        <label for="titre"> Titre: </label>
+        <textarea id="titre" placeholder="Que faut-il savoir sur le produit ?" autofocus required ></textarea>
+        <label for="message"> Message: </label>
+        <textarea id="message" oninput="validateMessage(this)" required></textarea>
       </div>
+      <input type="submit" id="envoyer" name="envoyer"> Envoyer </input>
     </form>
   </main>
 </body>
